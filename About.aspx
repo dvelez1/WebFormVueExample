@@ -5,6 +5,7 @@
     <p>Your app description page.</p>
     <p>Use this area to provide additional information. C#</p>
     <hr />
+    <%-- App 1 --%>
     <div id="app">
         <form>
             <div class="form-group">
