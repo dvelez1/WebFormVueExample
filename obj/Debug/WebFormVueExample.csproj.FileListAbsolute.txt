@@ -67,8 +67,8 @@ C:\Users\Dennis\source\repos\WebFormVueExample\bin\Newtonsoft.Json.xml
 C:\Users\Dennis\source\repos\WebFormVueExample\bin\Antlr3.Runtime.pdb
 C:\Users\Dennis\source\repos\WebFormVueExample\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\Dennis\source\repos\WebFormVueExample\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Dennis\source\repos\WebFormVueExample\obj\Debug\WebFormVueExample.csproj.AssemblyReference.cache
 C:\Users\Dennis\source\repos\WebFormVueExample\obj\Debug\WebFormVueExample.csproj.CoreCompileInputs.cache
 C:\Users\Dennis\source\repos\WebFormVueExample\obj\Debug\WebFormVueExample.csproj.CopyComplete
 C:\Users\Dennis\source\repos\WebFormVueExample\obj\Debug\WebFormVueExample.dll
 C:\Users\Dennis\source\repos\WebFormVueExample\obj\Debug\WebFormVueExample.pdb
+C:\Users\Dennis\source\repos\WebFormVueExample\obj\Debug\WebFormVueExample.csproj.AssemblyReference.cache
