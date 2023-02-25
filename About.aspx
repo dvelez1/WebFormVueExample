@@ -96,6 +96,7 @@
                     </div>
                     <div class="col-md-3">
                         <b>Watch Example: Will trigger an alert when Selected Value is 3: Kelvin</b>
+                        <div v-show="triggerAlertIfDropDownSelectionIsKelvin" class="alert alert-success" role="alert">Hello Kelvin!! example: v-show directive with computed property</div>
                     </div>
                 </div>
 
@@ -173,13 +174,17 @@
                     user.lastName = "";
                 }
 
-
                 //#endregion
 
                 //#region Example Computed
                 const dropDownSelectionComputedExample = computed(() => {
                     return dropDownSelectedItem.value == '1' ? 'Gerald' : dropDownSelectedItem.value == '2' ? 'Edwin' : dropDownSelectedItem.value == '3' ? 'Kelvin' : null;
                 })
+
+                const triggerAlertIfDropDownSelectionIsKelvin = computed(() => {
+                    return dropDownSelectedItem.value === '3'
+                });
+
 
                 //#endregion
 
@@ -200,6 +205,7 @@
                     clearUsersList,
                     resetUser,
                     dropDownSelectionComputedExample,
+                    triggerAlertIfDropDownSelectionIsKelvin
                 }
             }
         });
