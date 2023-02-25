@@ -68,11 +68,21 @@
                 <div class="row">
                     <div class="col-md-3">
                         <label>DropDown:</label>
-                        <select v-model="dropDownSelectedItem" class="form-control">
+<%--                        <select v-model="dropDownSelectedItem" class="form-control">
                             <option value="1">Gerald</option>
                             <option value="2">Edwin</option>
                             <option value="3">Kelvin</option>
-                        </select>
+                        </select>--%>
+
+                        <asp:DropDownList ID="nameDropDownList" class="form-control"
+                            AutoPostBack="false"
+                            v-model="dropDownSelectedItem"
+                            runat="server" >
+                            <asp:ListItem Value="1"> Gerald </asp:ListItem>
+                            <asp:ListItem Value="2"> Edwin </asp:ListItem>
+                            <asp:ListItem Value="3"> Kelvin </asp:ListItem>
+                        </asp:DropDownList>
+
                     </div>
                     <div class="col-md-3">
                         <label>V-IF Example:</label>
@@ -85,6 +95,7 @@
                             {{dropDownSelectionComputedExample}}</b>
                     </div>
                     <div class="col-md-3">
+                        <b>Watch Example: Will trigger an alert when Selected Value is 3: Kelvin</b>
                     </div>
                 </div>
 
@@ -118,13 +129,12 @@
     </div>
 
 
-
-
     <script>
         //Vue Initialization
-        const { createApp, ref, computed, reactive } = Vue;
+        const { createApp, ref, computed, reactive, watch } = Vue;
         // Reft Attribute for ractivity (We will use as shared Variable)
         const sharedVariable = ref('');
+
     </script>
 
     <script>
@@ -166,11 +176,21 @@
 
                 //#endregion
 
-                //Example Computed
+                //#region Example Computed
                 const dropDownSelectionComputedExample = computed(() => {
                     return dropDownSelectedItem.value == '1' ? 'Gerald' : dropDownSelectedItem.value == '2' ? 'Edwin' : dropDownSelectedItem.value == '3' ? 'Kelvin' : null;
                 })
 
+                //#endregion
+
+                //#region Example Watch
+                watch(dropDownSelectedItem, async (newDropDownSelectedItem, oldSDropDownSelectedItem) => {
+                    if (newDropDownSelectedItem === "3")
+                        alert("Watch Example: The selected Item was Kelvin!")
+
+                })
+                //#endregion
+                                
                 return {
                     user,
                     users,
@@ -180,7 +200,6 @@
                     clearUsersList,
                     resetUser,
                     dropDownSelectionComputedExample,
-
                 }
             }
         });
@@ -191,6 +210,7 @@
 
     <script>
 
+
         const app2 = createApp({
             setup() {
 
@@ -200,6 +220,8 @@
             }
         });
         app2.mount("#app2");
+
+
 
     </script>
 
