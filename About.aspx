@@ -1,4 +1,7 @@
-﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="WebFormVueExample.About"  %>
+﻿<%@ Register Tagprefix="asp" Namespace="System.Web.UI" Assembly="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" %>
+
+
+<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="WebFormVueExample.About"  %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
@@ -104,50 +107,51 @@
 
      <%-- App 2 --%>
 
-            <div id="app2">
+    <div id="app2">
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Application 2</h3>
-                    </div>
-
-                    <div class="panel-body">
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <b>Shared Variable between Apps:</b> {{sharedVariable}}
-                            </div>
-                            <div class="col-md-6">
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Application 3</h3>
-                    </div>
-
-                    <div class="panel-body">
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div>
-                                    Your Name :
-                            <asp:TextBox ID="txtUserName" runat="server"></asp:TextBox>
-                                    <input id="btnGetTime" type="button" value="Show Current Time"
-                                        onclick="ShowCurrentTime()" />
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Application 2</h3>
             </div>
+
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <b>Shared Variable between Apps:</b> {{sharedVariable}}
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Application 3</h3>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        Your Name :
+                            <asp:TextBox ID="txtUserName" runat="server"></asp:TextBox>
+                        <input id="btnGetTime" type="button" value="Show Current Time"
+                            onclick="ShowCurrentTime()" />
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 
 
@@ -159,32 +163,32 @@
 
     </script>
 
-                <script type="text/javascript">
-                    function ShowCurrentTime() {
-                        console.log("Me Dispare")
-                        $.ajax({
-                            type: "POST",
-                            xhrFields: {
-                                withCredentials: true
-                            },
-                            crossDomain: true,
-                            url: "About.aspx/GetCurrentTime",
-                            data: '{name: "Dennis" }',
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                            success: OnSuccess,
-                            failure: function (response) {
-                                console.log("Failure")
-                                alert(response.d);
-                            }
-                        });
-                    };
-                    
-                    function OnSuccess(response) {
-                        console.log("Success")
-                        alert(response.d);
-                    };
-                </script>
+    <script type="text/javascript">
+        function ShowCurrentTime() {
+            console.log("Me Dispare")
+            var obj = { name: "Dennis" };
+            var param = JSON.stringify(obj);
+            $.ajax({
+                method: "POST",
+                url: "About.aspx/GetCurrentTime",
+                data: param,  //'{name: "' + $("#<%=txtUserName.ClientID%>")[0].value + '" }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: true,
+                cache: false,
+                success: OnSuccess,
+                failure: function (response) {
+                    console.log("Failure")
+                    alert(response.d);
+                }
+            });
+        };
+
+        function OnSuccess(response) {
+            console.log("Success")
+            alert(response.d);
+        };
+    </script>
 
     <script>
 
