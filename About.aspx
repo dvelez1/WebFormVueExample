@@ -6,10 +6,8 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
-    <h2><%: Title %>.</h2>
-    <p>Your app description page.</p>
-    <p>Use this area to provide additional information. C#</p>
-    <hr />
+    <h2>See code in About Form</h2>
+    <br />
 
 
 
