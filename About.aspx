@@ -111,7 +111,7 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Application 2</h3>
+                <h3 class="panel-title">Application 2 - Example Share Reactive Data Between Vue Apps</h3>
             </div>
 
             <div class="panel-body">
@@ -130,9 +130,10 @@
 
     </div>
 
+    <%-- Example Ajax Call: We can make Ajax calls in a easy way. Also, we can use Axios for Ajax calls. DVG 02-26-23 --%>
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Application 3</h3>
+            <h3 class="panel-title">Application 3 - Example Ajax Calls with WebMethod</h3>
         </div>
 
         <div class="panel-body">
@@ -163,33 +164,7 @@
 
     </script>
 
-    <script type="text/javascript">
-        function ShowCurrentTime() {
-            console.log("Me Dispare")
-            var obj = { name: "Dennis" };
-            var param = JSON.stringify(obj);
-            $.ajax({
-                method: "POST",
-                url: "About.aspx/GetCurrentTime",
-                data: param,  //'{name: "' + $("#<%=txtUserName.ClientID%>")[0].value + '" }',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                async: true,
-                cache: false,
-                success: OnSuccess,
-                failure: function (response) {
-                    console.log("Failure")
-                    alert(response.d);
-                }
-            });
-        };
-
-        function OnSuccess(response) {
-            console.log("Success")
-            alert(response.d);
-        };
-    </script>
-
+ 
     <script>
 
         //Things to Add: 
@@ -283,7 +258,33 @@
 
     </script>
 
-        
+    <%-- Example Ajax Call --%>
+    <script type="text/javascript">
+        function ShowCurrentTime() {
+            console.log("Me Dispare")
+            var obj = { name: "Dennis" };
+            var param = JSON.stringify(obj);
+            $.ajax({
+                method: "POST",
+                url: "About.aspx/GetCurrentTime",
+                data: '{name: "' + $("#<%=txtUserName.ClientID%>")[0].value + '" }',
+                   contentType: "application/json; charset=utf-8",
+                   dataType: "json",
+                   async: true,
+                   cache: false,
+                   success: OnSuccess,
+                   failure: function (response) {
+                       console.log("Failure")
+                       alert(response.d);
+                   }
+               });
+        };
+
+        function OnSuccess(response) {
+            console.log("Success")
+            alert(response.d);
+        };
+    </script>
 
 
 </asp:Content>
