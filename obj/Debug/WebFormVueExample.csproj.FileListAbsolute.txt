@@ -71,3 +71,4 @@ C:\Users\Dennis\source\repos\WebFormVueExample\bin\Microsoft.CodeDom.Providers.D
 C:\Users\Dennis\source\repos\WebFormVueExample\obj\Debug\WebFormVueExample.csproj.CopyComplete
 C:\Users\Dennis\source\repos\WebFormVueExample\obj\Debug\WebFormVueExample.dll
 C:\Users\Dennis\source\repos\WebFormVueExample\obj\Debug\WebFormVueExample.pdb
+C:\Users\Dennis\source\repos\WebFormVueExample\obj\Debug\WebFormVueExample.csproj.AssemblyReference.cache

@@ -87,7 +87,7 @@
                     role: ''
                 });
 
-                const users = reactive([
+                var users = reactive([
                     { firstName: 'Frank', lastName: 'Murphy', email: 'frank.murphy@test.com', role: 'User' },
                     { firstName: 'Vic', lastName: 'Reynolds', email: 'vic.reynolds@test.com', role: 'Admin' },
                     { firstName: 'Gina', lastName: 'Jabowski', email: 'gina.jabowski@test.com', role: 'Admin' },
@@ -101,10 +101,13 @@
 
                 onBeforeMount(() => {
                     //
+
                 });
 
                 onMounted(() => {
                     //
+                    //getEmployees();
+                    //console.log("users2", users)
                 });
 
                 //#endregion
@@ -113,9 +116,9 @@
                 const addUser = () => {
                     users.push({
                         firstName: user.firstName,
-                        lastName:user.lastName,
-                        email:user.email ,
-                        role:user.role, 
+                        lastName: user.lastName,
+                        email: user.email,
+                        role: user.role,
                     })
                     resetUser();
                 };
@@ -127,14 +130,36 @@
                     user.role = "";
                 }
 
+                const getEmployees = () => {
+                    $.ajax({
+                        method: "POST",
+                        url: "Contact.aspx/GetEmpList",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        async: true,
+                        cache: false,
+                        success: function (response) {
+                            users = response.d
+                            console.log("users", users);
+                        },
+                        failure: function (response) {
+                            console.log("Failure")
+                            alert(response.d);
+                        }
+                    });
+
+
+                }
+
                 //#endregion
-                
+
 
                 return {
                     user,
                     users,
                     addUser,
                     resetUser,
+                    getEmployees
                 }
             }
         });
