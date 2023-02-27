@@ -40,9 +40,10 @@
                 </div>
                 <br />
                 <div class="row">
-                    <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary" @click ="addUser" onclick='return false;' style="float: right">Submit</button> 
-                        <button type="submit" class="btn btn-default" @click ="resetUser" onclick='return false;' style="float: right">Clear</button>
+                    <div class="col-md-12 text-right">
+                        
+                        <button type="submit" class="btn btn-default" @click ="resetUser" onclick='return false;'>Clear</button>&nbsp;
+                        <button type="submit" class="btn btn-primary" @click ="addUser" onclick='return false;' >Submit</button> 
                     </div>
                 </div>
                 <br />
@@ -73,8 +74,7 @@
 
     <script>
 
-        const { createApp, ref, reactive, onMounted, onBeforeMount } = Vue;
-
+        const { createApp, ref, reactive, onMounted } = Vue;
 
         const app = createApp({
             setup() {
@@ -88,28 +88,16 @@
                 });
 
                 var users = reactive([
-                    { firstName: 'Frank', lastName: 'Murphy', email: 'frank.murphy@test.com', role: 'User' },
-                    { firstName: 'Vic', lastName: 'Reynolds', email: 'vic.reynolds@test.com', role: 'Admin' },
-                    { firstName: 'Gina', lastName: 'Jabowski', email: 'gina.jabowski@test.com', role: 'Admin' },
-                    { firstName: 'Jessi', lastName: 'Glaser', email: 'jessi.glaser@test.com', role: 'User' },
-                    { firstName: 'Jay', lastName: 'Bilzerian', email: 'jay.bilzerian@test.com', role: 'User' }
+                    /*{ firstName: 'Frank', lastName: 'Murphy', email: 'frank.murphy@test.com', role: 'User' },*/
+                    //{ firstName: 'Vic', lastName: 'Reynolds', email: 'vic.reynolds@test.com', role: 'Admin' },
+                    //{ firstName: 'Gina', lastName: 'Jabowski', email: 'gina.jabowski@test.com', role: 'Admin' },
+                    //{ firstName: 'Jessi', lastName: 'Glaser', email: 'jessi.glaser@test.com', role: 'User' },
+                    //{ firstName: 'Jay', lastName: 'Bilzerian', email: 'jay.bilzerian@test.com', role: 'User' }
                 ]);
 
-                //#endregion
+             /*   var users = reactive([]);*/
 
-                //#region lyfe Cycle Hooks
-
-                onBeforeMount(() => {
-                    //
-
-                });
-
-                onMounted(() => {
-                    //
-                    //getEmployees();
-                    //console.log("users2", users)
-                });
-
+               
                 //#endregion
 
                 //#region Methods
@@ -122,7 +110,7 @@
                     })
                     resetUser();
                 };
-
+                  
                 const resetUser = () => {
                     user.firstName = "";
                     user.lastName = "";
@@ -139,21 +127,32 @@
                         async: true,
                         cache: false,
                         success: function (response) {
-                            users = response.d
-                            console.log("users", users);
+                            response.d.forEach((element) => {
+                                users.push({
+                                    firstName: element.firstName,
+                                    lastName: element.lastName,
+                                    email: element.email,
+                                    role: element.role,
+                                })
+                            });
                         },
                         failure: function (response) {
                             console.log("Failure")
                             alert(response.d);
                         }
                     });
-
-
                 }
 
                 //#endregion
 
+                //#region lyfe Cycle Hooks
 
+                onMounted(() => {
+                    getEmployees();
+                });
+
+                //#endregion
+       
                 return {
                     user,
                     users,
@@ -164,7 +163,6 @@
             }
         });
         app.mount("#app");
-
 
     </script>
 

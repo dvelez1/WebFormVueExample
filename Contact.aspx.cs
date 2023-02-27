@@ -24,8 +24,8 @@ namespace WebFormVueExample
         {
 
             var empList = new List<Employee>(){
-         new Employee { firstName="Ramon", lastName="Pardo", email="ramon@email.com",role="HR"},
-         new Employee { firstName="Luis", lastName="García", email="luisG@email.com",role="IT"}
+               new Employee { firstName="Ramon", lastName="Pardo", email="ramon@email.com",role="HR"},
+              new Employee { firstName="Luis", lastName="García", email="luisG@email.com",role="IT"}
             };
 
             return empList;
