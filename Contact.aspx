@@ -7,7 +7,7 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 
-    <h2>See code in Contact Form</h2>
+    <h2>See the code in the Contact Form</h2>
 
     <br />
 
@@ -15,7 +15,7 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Example of get and post</h3>
+                <h3 class="panel-title">CRUD Example</h3>
             </div>
 
             <div class="panel-body">
@@ -41,7 +41,6 @@
                 <br />
                 <div class="row">
                     <div class="col-md-12 text-right">
-                        
                         <button type="submit" class="btn btn-default" @click ="resetUser" onclick='return false;'>Clear</button>&nbsp;
                         <button type="submit" class="btn btn-primary" @click ="addUser" onclick='return false;' >Submit</button> 
                     </div>
@@ -54,6 +53,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
+                                <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -61,6 +61,9 @@
                           <td>{{item.firstName}} {{item.lastName}}</td>
                             <td>{{item.email}}</td>
                             <td>{{item.role}}</td>
+                            <td><span class="glyphicon glyphicon-pencil" aria-hidden="true"  @click ="gridEditEvent(item)"></span>&nbsp;
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true" @click ="gridDeleteEvent(item)"></span>
+                            </td>
                         </tr>
                         </tbody>
                </table>
@@ -95,9 +98,9 @@
                     //{ firstName: 'Jay', lastName: 'Bilzerian', email: 'jay.bilzerian@test.com', role: 'User' }
                 ]);
 
-             /*   var users = reactive([]);*/
+                /*   var users = reactive([]);*/
 
-               
+
                 //#endregion
 
                 //#region Methods
@@ -109,8 +112,9 @@
                         role: user.role,
                     })
                     resetUser();
+                    alert("Success!")
                 };
-                  
+
                 const resetUser = () => {
                     user.firstName = "";
                     user.lastName = "";
@@ -143,6 +147,19 @@
                     });
                 }
 
+                const gridEditEvent = (object) => {
+                    // Redirect to another page or call a Modal for Editing Purposes
+                    alert(JSON.stringify(object, null, 4));
+                }
+
+                const gridDeleteEvent = (object) => {
+                    const objWithIdIndex = users.findIndex((obj) => obj.firstName === object.firstName);
+                    if (objWithIdIndex > -1) {
+                        users.splice(objWithIdIndex, 1);
+                    }
+                    alert("Success!")
+                }
+
                 //#endregion
 
                 //#region lyfe Cycle Hooks
@@ -152,13 +169,15 @@
                 });
 
                 //#endregion
-       
+
                 return {
                     user,
                     users,
                     addUser,
                     resetUser,
-                    getEmployees
+                    getEmployees,
+                    gridEditEvent,
+                    gridDeleteEvent
                 }
             }
         });

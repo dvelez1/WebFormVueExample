@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
-    <h2>See code in About Form</h2>
+    <h2>See the code in the About Form</h2>
     <br />
 
 
@@ -39,7 +39,7 @@
                             {{user.name + ' ' + user.lastName}}
                         </div>
                         <div>
-                            <label>Push:</label>
+                            <label>v-for Example:</label>
                             <li v-for="item in users">{{ item }}
                             </li>
                         </div>
@@ -159,19 +159,17 @@
     <script>
         //Vue Initialization
         const { createApp, ref, computed, reactive, watch } = Vue;
-        // Reft Attribute for ractivity (We will use as shared Variable)
+        // Ref Attribute for reactivity and shared data between vue apps
         const sharedVariable = ref('');
 
     </script>
 
- 
+    <%-- APP 1 --%>
     <script>
 
         //Things to Add: 
-        // 1 - Composable function for share variables,
-        // 2 - Ajax Call
-        // 3 - Try to create a main and also childs components.
-        // 5 - Example of partial views
+        // 1 - Try to create a main and also childs components.
+        // 2 - Example of partial views
 
 
         const app = createApp({
@@ -241,6 +239,7 @@
 
     </script>
 
+     <%-- APP 2 --%>
     <script>
 
 

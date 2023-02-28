@@ -52,7 +52,7 @@
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Introduction</a></li>
                         <li><a runat="server" href="~/About">Vue Examples</a></li>
-                        <li><a runat="server" href="~/Contact">Get and Post Example</a></li>
+                        <li><a runat="server" href="~/Contact">CRUD Example</a></li>
                     </ul>
                 </div>
             </div>

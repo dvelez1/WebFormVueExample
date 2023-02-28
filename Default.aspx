@@ -4,7 +4,7 @@
 
     <div class="jumbotron">
         <h1>VUE Examples for ASP.NET</h1>
-        <p class="lead">In this presentation we will providing multiple practical examples of how complement ASP.NET development with Vue 3. 
+        <p class="lead">In this presentation we will provide multiple practical examples of how to complement an ASP.NET development with Vue 3. 
         </p>
         <p><a href="https://vuejs.org/" class="btn btn-primary btn-lg">Learn more about Vue &raquo;</a></p>
     </div>
