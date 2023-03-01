@@ -74,10 +74,46 @@
 
     </div>
 
+      <div id="companyApp">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">CRUD Example 2</h3>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Company Name</label>
+                        <input type="text" class="form-control" v-model="company.companyName" placeholder="Company Name">
+                    </div>
+                    <div class="col-md-3">
+                        <label>Company Location</label>
+                        <input type="text" class="form-control" v-model="company.location" placeholder="Company Location">
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button type="submit" class="btn btn-default" @click ="resetCompany" onclick='return false;'>Clear</button>&nbsp;
+                        <button type="submit" class="btn btn-primary" @click ="addCompany" onclick='return false;' >Submit</button> 
+                    </div>
+                </div>
+                <br />
+                             
+              
+            </div>
+
+        </div>
+
+    </div>
 
     <script>
-
         const { createApp, ref, reactive, onMounted } = Vue;
+    </script>
+
+    <script>
 
         const app = createApp({
             setup() {
@@ -89,17 +125,7 @@
                     email: '',
                     role: ''
                 });
-
-                var users = reactive([
-                    /*{ firstName: 'Frank', lastName: 'Murphy', email: 'frank.murphy@test.com', role: 'User' },*/
-                    //{ firstName: 'Vic', lastName: 'Reynolds', email: 'vic.reynolds@test.com', role: 'Admin' },
-                    //{ firstName: 'Gina', lastName: 'Jabowski', email: 'gina.jabowski@test.com', role: 'Admin' },
-                    //{ firstName: 'Jessi', lastName: 'Glaser', email: 'jessi.glaser@test.com', role: 'User' },
-                    //{ firstName: 'Jay', lastName: 'Bilzerian', email: 'jay.bilzerian@test.com', role: 'User' }
-                ]);
-
-                /*   var users = reactive([]);*/
-
+                var users = reactive([]);
 
                 //#endregion
 
@@ -112,7 +138,6 @@
                         role: user.role,
                     })
                     resetUser();
-                    alert("Success!")
                 };
 
                 const resetUser = () => {
@@ -128,8 +153,7 @@
                         url: "Contact.aspx/GetEmpList",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
-                        async: true,
-                        cache: false,
+                        async: false,
                         success: function (response) {
                             response.d.forEach((element) => {
                                 users.push({
@@ -157,12 +181,11 @@
                     if (objWithIdIndex > -1) {
                         users.splice(objWithIdIndex, 1);
                     }
-                    alert("Success!")
                 }
 
                 //#endregion
 
-                //#region lyfe Cycle Hooks
+                //#region life Cycle Hooks
 
                 onMounted(() => {
                     getEmployees();
@@ -184,5 +207,94 @@
         app.mount("#app");
 
     </script>
+
+        <script>
+
+            const companyApp = createApp({
+                setup() {
+
+                    //#region Example reactivity (Models/properties)
+                    const company = reactive({
+                        companyName: '',
+                        location: '',
+                    });
+
+                    //#endregion
+
+                    //#region Methods 
+                    const addCompany = () => {
+
+                        $.ajax({
+                            method: "POST",
+                            url: "Contact.aspx/InsertCompany",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            async: false,
+                            data: JSON.stringify({ company: company }), 
+                            success: function (response) {
+                                if (response.d.requestStatus == 200) { // 200 means a good request
+                                    console.log("response.d.requestStatus", response.d.requestStatus)
+                                    console.log("response.d.data", response.d.data)
+                                    //Load Information
+                                    getCompany();
+                                    alert("Success!")
+                                } else {
+                                    //Trigger Notification Alert (Bad Request)
+                                }
+                            },
+                            failure: function (response) {
+                                console.log("Failure")
+                                alert(response.d);
+                            }
+                        });
+
+                        resetCompany();
+
+                    };
+
+                    const resetCompany = () => {
+                        company.companyName = "";
+                        company.location = "";
+                    }
+
+                    const getCompany = () => {
+                        $.ajax({
+                            method: "POST",
+                            url: "Contact.aspx/GetCompany",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            async: false,
+                            success: function (response) {
+                                company.companyName = response.d.companyName;
+                                company.location = response.d.location;
+                            },
+                            failure: function (response) {
+                                console.log("Failure")
+                                alert(response.d);
+                            }
+                        });
+                    }
+
+                    //#endregion
+
+                    //#region life Cycle Hooks
+
+                    onMounted(() => {
+                        getCompany();
+                    });
+
+                    //#endregion
+
+                    return {
+                        company,
+                        resetCompany,
+                        getCompany,
+                        addCompany
+                    }
+                }
+            });
+            companyApp.mount("#companyApp");
+
+        </script>
 
 </asp:Content>

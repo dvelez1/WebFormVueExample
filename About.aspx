@@ -210,7 +210,6 @@
                     return dropDownSelectedItem.value === '3'
                 });
 
-
                 //#endregion
 
                 //#region Example Watch
@@ -220,7 +219,7 @@
 
                 })
                 //#endregion
-                                
+
                 return {
                     user,
                     users,
@@ -242,7 +241,6 @@
      <%-- APP 2 --%>
     <script>
 
-
         const app2 = createApp({
             setup() {
 
@@ -252,8 +250,6 @@
             }
         });
         app2.mount("#app2");
-
-
 
     </script>
 
@@ -267,16 +263,16 @@
                 method: "POST",
                 url: "About.aspx/GetCurrentTime",
                 data: '{name: "' + $("#<%=txtUserName.ClientID%>")[0].value + '" }',
-                   contentType: "application/json; charset=utf-8",
-                   dataType: "json",
-                   async: true,
-                   cache: false,
-                   success: OnSuccess,
-                   failure: function (response) {
-                       console.log("Failure")
-                       alert(response.d);
-                   }
-               });
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: true,
+                cache: false,
+                success: OnSuccess,
+                failure: function (response) {
+                    console.log("Failure")
+                    alert(response.d);
+                }
+            });
         };
 
         function OnSuccess(response) {
