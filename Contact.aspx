@@ -74,7 +74,7 @@
 
     </div>
 
-      <div id="companyApp">
+    <div id="companyApp">
 
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -95,14 +95,14 @@
                 </div>
                 <br />
                 <div class="row">
-                    <div class="col-md-12 text-right">
-                        <button type="submit" class="btn btn-default" @click ="resetCompany" onclick='return false;'>Clear</button>&nbsp;
-                        <button type="submit" class="btn btn-primary" @click ="addCompany" onclick='return false;' >Submit</button> 
+                     <div class="col-md-12 text-right">
+                        <button type="submit" class="btn btn-default" @click ="methodsAPI.resetCompany" onclick='return false;'>Clear</button>&nbsp;
+                        <button type="submit" class="btn btn-primary" @click ="methodsAPI.addCompany" onclick='return false;' >Submit</button> 
                     </div>
                 </div>
                 <br />
-                             
-              
+
+
             </div>
 
         </div>
@@ -126,7 +126,6 @@
                     role: ''
                 });
                 var users = reactive([]);
-
                 //#endregion
 
                 //#region Methods
@@ -182,7 +181,6 @@
                         users.splice(objWithIdIndex, 1);
                     }
                 }
-
                 //#endregion
 
                 //#region life Cycle Hooks
@@ -208,93 +206,101 @@
 
     </script>
 
-        <script>
+    <script>
 
-            const companyApp = createApp({
-                setup() {
+        const companyApp = createApp({
+            setup() {
 
-                    //#region Example reactivity (Models/properties)
-                    const company = reactive({
-                        companyName: '',
-                        location: '',
+                //#region Example reactivity (Models/properties)
+                const company = reactive({
+                    companyName: '',
+                    location: '',
+                });
+                //#endregion
+
+                //#region Methods 
+                const addCompany = () => {
+
+                    $.ajax({
+                        method: "POST",
+                        url: "Contact.aspx/InsertCompany",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        async: false,
+                        data: JSON.stringify({ company: company }),
+                        success: function (response) {
+                            if (response.d.requestStatus == 200) { // 200 means a good request
+                                console.log("Post Response Status:", response.d.requestStatus)
+                                console.log("Inserted Data", response.d.data)
+                                //Load Information
+                                getCompany();
+                                alert("Success!") 
+                            } else {
+                                //Trigger Notification Alert (Bad Request)
+                                console.log("Post Response Status:", response.d.data)
+                                alert(response.d.data);
+                            }
+                        },
+                        failure: function (response) {
+                            console.log("Failure")
+                            alert(response.d);
+                        }
                     });
 
-                    //#endregion
+                };
 
-                    //#region Methods 
-                    const addCompany = () => {
-
-                        $.ajax({
-                            method: "POST",
-                            url: "Contact.aspx/InsertCompany",
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                            async: false,
-                            data: JSON.stringify({ company: company }), 
-                            success: function (response) {
-                                if (response.d.requestStatus == 200) { // 200 means a good request
-                                    console.log("response.d.requestStatus", response.d.requestStatus)
-                                    console.log("response.d.data", response.d.data)
-                                    //Load Information
-                                    getCompany();
-                                    alert("Success!")
-                                } else {
-                                    //Trigger Notification Alert (Bad Request)
-                                }
-                            },
-                            failure: function (response) {
-                                console.log("Failure")
-                                alert(response.d);
-                            }
-                        });
-
-                        resetCompany();
-
-                    };
-
-                    const resetCompany = () => {
-                        company.companyName = "";
-                        company.location = "";
-                    }
-
-                    const getCompany = () => {
-                        $.ajax({
-                            method: "POST",
-                            url: "Contact.aspx/GetCompany",
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                            async: false,
-                            success: function (response) {
-                                company.companyName = response.d.companyName;
-                                company.location = response.d.location;
-                            },
-                            failure: function (response) {
-                                console.log("Failure")
-                                alert(response.d);
-                            }
-                        });
-                    }
-
-                    //#endregion
-
-                    //#region life Cycle Hooks
-
-                    onMounted(() => {
-                        getCompany();
-                    });
-
-                    //#endregion
-
-                    return {
-                        company,
-                        resetCompany,
-                        getCompany,
-                        addCompany
-                    }
+                const resetCompany = () => {
+                    company.companyName = "";
+                    company.location = "";
                 }
-            });
-            companyApp.mount("#companyApp");
 
-        </script>
+                const getCompany = () => {
+                    $.ajax({
+                        method: "POST",
+                        url: "Contact.aspx/GetCompany",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        async: false,
+                        success: function (response) {
+                            company.companyName = response.d.companyName;
+                            company.location = response.d.location;
+                        },
+                        failure: function (response) {
+                            console.log("Failure")
+                            alert(response.d);
+                        }
+                    });
+                }
+
+                //#endregion
+
+                //#region life Cycle Hooks
+
+                console.log("setup");
+                getCompany(); // Similar to option API Create life Cycle
+
+                onMounted(() => {
+                    console.log("onMounted");
+                    //getCompany();
+                });
+
+                //#endregion
+
+                // Group of methods
+                const methodsAPI = {
+                    resetCompany,
+                    getCompany,
+                    addCompany
+                }
+
+                return {
+                    company,
+                    methodsAPI
+                }
+            }
+        });
+        companyApp.mount("#companyApp");
+
+    </script>
 
 </asp:Content>

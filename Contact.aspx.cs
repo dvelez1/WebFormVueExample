@@ -11,7 +11,12 @@ namespace WebFormVueExample
 {
     public partial class Contact : Page
     {
+        protected void Page_Load(object sender, EventArgs e)
+        {
 
+        }
+
+        #region Empl List Example
         public class Employee
         {
             public string firstName { get; set; }
@@ -32,6 +37,10 @@ namespace WebFormVueExample
             return empList;
         }
 
+        #endregion
+
+        #region Company Example
+
         public class Company
         {
             public string companyName { get; set; }
@@ -41,22 +50,28 @@ namespace WebFormVueExample
         [WebMethod]
         public static Company GetCompany()
         {
-            var comp =
-              new Company { companyName = "MyCompanyName", location = "Puerto Rico" };
-
-            return comp;
+            return new Company { companyName = "MyCompanyName", location = "Puerto Rico" };
         }
 
         [WebMethod]
         public static object InsertCompany(Company company)
         {
-            Console.WriteLine(company);
-            return new { requestStatus = 200, data = company };
+            try
+            {
+                Console.WriteLine(company);
+                return new { requestStatus = 200, data = company };
+                //return new { requestStatus = 400, data = "Error Message!" };
+            }
+            catch (Exception ex)
+            {
+                return new { requestStatus = 400, data = "Error Message!" + ex.ToString() };
+            }
+
         }
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
+        #endregion
 
-        }
+
+
     }
 }
