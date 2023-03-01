@@ -6,7 +6,8 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
+    <%-- Below Production Mode --%>
+    <%--<script src="https://unpkg.com/vue@3.1.1/dist/vue.global.prod.js"></script> --%>
     <h2>See the code in the About Form</h2>
     <br />
 
