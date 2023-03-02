@@ -125,7 +125,7 @@
                     email: '',
                     role: ''
                 });
-                var users = reactive([]);
+                const users = reactive([]);
                 //#endregion
 
                 //#region Methods
@@ -277,7 +277,7 @@
                 //#region life Cycle Hooks
 
                 console.log("setup");
-                getCompany(); // Similar to option API Create life Cycle
+                getCompany(); // Similar to option API Create life Cycle Hook
 
                 onMounted(() => {
                     console.log("onMounted");
