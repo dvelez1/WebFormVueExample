@@ -49,13 +49,9 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
-        <%-- On Load add Toast Configuration --%>
+      
         <script type="text/javascript">
-            $(document).ready(function () {
-                //Add Toast Configuration
-                //toastr.options.timeOut = 1500; // 1.5s
-                //toastr.closeButton = true;
-                console.log("Me tire")
+            //#region Toastr Configuration
                 toastr.options = {
                     "closeButton": true,
                     "debug": false,
@@ -71,9 +67,8 @@
                     "hideEasing": "linear",
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
-                }
-            });
-      
+            }
+            //#endregion
         </script>
         <%-- Toast Reference Above --%>
 
