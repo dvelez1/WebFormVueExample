@@ -1,4 +1,3 @@
-C:\Users\Dennis\source\repos\WebFormVueExample\obj\Debug\WebFormVueExample.csproj.CoreCompileInputs.cache
 C:\Users\Dennis\source\repos\WebFormVueExample\bin\WebFormVueExample.dll.config
 C:\Users\Dennis\source\repos\WebFormVueExample\bin\WebFormVueExample.dll
 C:\Users\Dennis\source\repos\WebFormVueExample\bin\WebFormVueExample.pdb
@@ -63,12 +62,13 @@ C:\Users\Dennis\source\repos\WebFormVueExample\bin\Microsoft.Web.Infrastructure.
 C:\Users\Dennis\source\repos\WebFormVueExample\bin\Newtonsoft.Json.dll
 C:\Users\Dennis\source\repos\WebFormVueExample\bin\System.Web.Optimization.dll
 C:\Users\Dennis\source\repos\WebFormVueExample\bin\WebGrease.dll
-C:\Users\Dennis\source\repos\WebFormVueExample\bin\System.Web.Optimization.xml
 C:\Users\Dennis\source\repos\WebFormVueExample\bin\Newtonsoft.Json.xml
+C:\Users\Dennis\source\repos\WebFormVueExample\bin\System.Web.Optimization.xml
 C:\Users\Dennis\source\repos\WebFormVueExample\bin\Antlr3.Runtime.pdb
 C:\Users\Dennis\source\repos\WebFormVueExample\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\Dennis\source\repos\WebFormVueExample\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Dennis\source\repos\WebFormVueExample\obj\Debug\WebFormVueExample.csproj.AssemblyReference.cache
+C:\Users\Dennis\source\repos\WebFormVueExample\obj\Debug\WebFormVueExample.csproj.CoreCompileInputs.cache
 C:\Users\Dennis\source\repos\WebFormVueExample\obj\Debug\WebFormVueExample.csproj.CopyComplete
 C:\Users\Dennis\source\repos\WebFormVueExample\obj\Debug\WebFormVueExample.dll
 C:\Users\Dennis\source\repos\WebFormVueExample\obj\Debug\WebFormVueExample.pdb
-C:\Users\Dennis\source\repos\WebFormVueExample\obj\Debug\WebFormVueExample.csproj.AssemblyReference.cache
