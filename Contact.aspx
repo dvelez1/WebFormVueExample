@@ -40,6 +40,20 @@
                 </div>
                 <br />
                 <div class="row">
+
+                <div class="col-md-3">
+                    <label for="fruit">Select an option:</label>
+                    <select id="fruit" v-model="selectedFruit">
+                      <option v-for="fruit in fruits" :key="fruit.id" :value="fruit.id">
+                        {{ fruit.label }}
+                      </option>
+                    </select>
+                    <p>Selected: {{ selectedFruit }}</p>
+                    </div>
+
+                </div>
+                <br />
+                <div class="row">
                     <div class="col-md-12 text-right">
                         <button type="submit" class="btn btn-default" @click ="resetUser" onclick='return false;'>Clear</button>&nbsp;
                         <button type="submit" class="btn btn-primary" @click ="addUser" onclick='return false;' >Submit</button> 
@@ -53,7 +67,10 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
-                                <th>Edit</th>
+<%--                                <th>DataSourceSelection</th>--%>
+                                <th>Fruit</th>
+                                <th>fruit2</th>
+                                                                <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -61,6 +78,21 @@
                           <td>{{item.firstName}} {{item.lastName}}</td>
                             <td>{{item.email}}</td>
                             <td>{{item.role}}</td>
+                            <td>{{item.fruit}}</td>
+                            <td>                    
+            
+                    <label for="fruit2">Select an option:</label>
+                    <select id="fruit2" v-model="item.fruit">
+                      <option v-for="fruit in fruits" :key="fruit.id" :value="fruit.id">
+                        {{ fruit.label }}
+                      </option>
+                    </select>
+                    <p>Selected: {{ item.fruit }}</p>
+               
+
+                
+
+                            </td>
                             <td><span class="glyphicon glyphicon-pencil" aria-hidden="true"  @click ="gridEditEvent(item)"></span>&nbsp;
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true" @click ="gridDeleteEvent(item)"></span>
                             </td>
@@ -123,7 +155,8 @@
                     firstName: '',
                     lastName: '',
                     email: '',
-                    role: ''
+                    role: '',
+                    fruit: ''
                 });
                 const users = reactive([]);
                 //#endregion
@@ -135,6 +168,7 @@
                         lastName: user.lastName,
                         email: user.email,
                         role: user.role,
+                        fruit: selectedFruit
                     })
                     resetUser();
                 };
@@ -144,6 +178,7 @@
                     user.lastName = "";
                     user.email = "";
                     user.role = "";
+                    user.fruit = "";
                 }
 
                 const getEmployees = () => {
@@ -183,6 +218,31 @@
                 }
                 //#endregion
 
+                // New Added
+                const fruits = ref([
+                    { id: 1, value: "apple", label: "Apple" },
+                    { id: 2, value: "banana", label: "Banana" },
+                    { id: 3, value: "cherry", label: "Cherry" },
+                ]);
+
+                const selectedFruit = ref("");
+
+
+                const cars = ref([
+                    { id: 1, value: "Toyota", label: "Toyota" },
+                    { id: 2, value: "Honda", label: "Honda" },
+                    { id: 3, value: "Hyunday", label: "Hyunday" },
+                ]);
+
+                const selectedCar = ref("");
+
+                const dataSourceSelection = ref([
+                    { id: 1, value: "Fruits", label: "Fruits" },
+                    { id: 2, value: "Cars", label: "Cars" }
+                ]);
+
+                const selectedDataSource = ref("");
+
                 //#region life Cycle Hooks
 
                 onMounted(() => {
@@ -198,7 +258,8 @@
                     resetUser,
                     getEmployees,
                     gridEditEvent,
-                    gridDeleteEvent
+                    gridDeleteEvent,
+                    fruits, selectedFruit, cars, selectedCar, dataSourceSelection, selectedDataSource  // Added
                 }
             }
         });
@@ -234,7 +295,7 @@
                                 console.log("Inserted Data", response.d.data)
                                 //Load Information
                                 getCompany();
-                                alert("Success!") 
+                                alert("Success!")
                             } else {
                                 //Trigger Notification Alert (Bad Request)
                                 console.log("Post Response Status:", response.d.data)
