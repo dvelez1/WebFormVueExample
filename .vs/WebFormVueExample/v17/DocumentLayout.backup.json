@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\velez\\source\\repos\\WebFormVueExample\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{12A07AE1-00C5-499E-82FA-6B1EB37DA73F}|WebFormVueExample.csproj|c:\\users\\velez\\source\\repos\\webformvueexample\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
-      "RelativeMoniker": "D:0:0:{12A07AE1-00C5-499E-82FA-6B1EB37DA73F}|WebFormVueExample.csproj|solutionrelative:site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{12A07AE1-00C5-499E-82FA-6B1EB37DA73F}|WebFormVueExample.csproj|C:\\Users\\velez\\source\\repos\\WebFormVueExample\\Default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{12A07AE1-00C5-499E-82FA-6B1EB37DA73F}|WebFormVueExample.csproj|solutionrelative:Default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{12A07AE1-00C5-499E-82FA-6B1EB37DA73F}|WebFormVueExample.csproj|C:\\Users\\velez\\source\\repos\\WebFormVueExample\\Site.Master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{12A07AE1-00C5-499E-82FA-6B1EB37DA73F}|WebFormVueExample.csproj|solutionrelative:Site.Master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{12A07AE1-00C5-499E-82FA-6B1EB37DA73F}|WebFormVueExample.csproj|C:\\Users\\velez\\source\\repos\\WebFormVueExample\\Default.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{12A07AE1-00C5-499E-82FA-6B1EB37DA73F}|WebFormVueExample.csproj|solutionrelative:Default.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{12A07AE1-00C5-499E-82FA-6B1EB37DA73F}|WebFormVueExample.csproj|c:\\users\\velez\\source\\repos\\webformvueexample\\contact.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{12A07AE1-00C5-499E-82FA-6B1EB37DA73F}|WebFormVueExample.csproj|solutionrelative:contact.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,60 +14,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Site.Master",
-              "DocumentMoniker": "C:\\Users\\velez\\source\\repos\\WebFormVueExample\\Site.Master",
-              "RelativeDocumentMoniker": "Site.Master",
-              "ToolTip": "C:\\Users\\velez\\source\\repos\\WebFormVueExample\\Site.Master",
-              "RelativeToolTip": "Site.Master",
+              "Title": "Contact.aspx",
+              "DocumentMoniker": "C:\\Users\\velez\\source\\repos\\WebFormVueExample\\Contact.aspx",
+              "RelativeDocumentMoniker": "Contact.aspx",
+              "ToolTip": "C:\\Users\\velez\\source\\repos\\WebFormVueExample\\Contact.aspx",
+              "RelativeToolTip": "Contact.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-03-02T20:01:17.612Z",
+              "WhenOpened": "2025-03-02T20:05:10.529Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Default.aspx",
-              "DocumentMoniker": "C:\\Users\\velez\\source\\repos\\WebFormVueExample\\Default.aspx",
-              "RelativeDocumentMoniker": "Default.aspx",
-              "ToolTip": "C:\\Users\\velez\\source\\repos\\WebFormVueExample\\Default.aspx",
-              "RelativeToolTip": "Default.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-03-02T20:01:17.572Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Site.Master.cs",
-              "DocumentMoniker": "C:\\Users\\velez\\source\\repos\\WebFormVueExample\\Site.Master.cs",
-              "RelativeDocumentMoniker": "Site.Master.cs",
-              "ToolTip": "C:\\Users\\velez\\source\\repos\\WebFormVueExample\\Site.Master.cs",
-              "RelativeToolTip": "Site.Master.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T20:01:17.615Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Default.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\velez\\source\\repos\\WebFormVueExample\\Default.aspx.cs",
-              "RelativeDocumentMoniker": "Default.aspx.cs",
-              "ToolTip": "C:\\Users\\velez\\source\\repos\\WebFormVueExample\\Default.aspx.cs",
-              "RelativeToolTip": "Default.aspx.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAqwBwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T20:01:17.618Z"
             }
           ]
         }

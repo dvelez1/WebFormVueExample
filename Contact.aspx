@@ -67,10 +67,9 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
-<%--                                <th>DataSourceSelection</th>--%>
-                                <th>Fruit</th>
-                                <th>fruit2</th>
-                                                                <th>Edit</th>
+                                <th>DataSourceSelection</th>
+                                <th>combobox Based on selection</th>
+                                 <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -78,20 +77,26 @@
                           <td>{{item.firstName}} {{item.lastName}}</td>
                             <td>{{item.email}}</td>
                             <td>{{item.role}}</td>
-                            <td>{{item.fruit}}</td>
+                            <td>
+
+                             <label for="datasource">Select an option:</label>
+                                <select id="datasource" v-model="item.datasource">
+                                  <option v-for="option in dataSourceSelection" :key="option.id" :value="option.id">
+                                    {{ option.label }}
+                                  </option>
+                                </select>
+                                <p>Selected: {{ item.datasource }}</p>
+                            </td>
                             <td>                    
             
-                    <label for="fruit2">Select an option:</label>
-                    <select id="fruit2" v-model="item.fruit">
-                      <option v-for="fruit in fruits" :key="fruit.id" :value="fruit.id">
-                        {{ fruit.label }}
-                      </option>
-                    </select>
-                    <p>Selected: {{ item.fruit }}</p>
+                                <label for="dynamicDataSouruce">Select an option:</label>
+                                <select id="dynamicDataSouruce" v-model="item.dynamicId">
+                                  <option v-for="option in item.datasource == 1 ? fruits: cars" :key="option.id" :value="option.id">
+                                    {{ option.label }}
+                                  </option>
+                                </select>
+                                <p>Selected: {{ item.dynamicId }}</p>
                
-
-                
-
                             </td>
                             <td><span class="glyphicon glyphicon-pencil" aria-hidden="true"  @click ="gridEditEvent(item)"></span>&nbsp;
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true" @click ="gridDeleteEvent(item)"></span>
@@ -142,7 +147,7 @@
     </div>
 
     <script>
-        const { createApp, ref, reactive, onMounted } = Vue;
+        const { createApp, ref, reactive, onMounted, watch } = Vue;
     </script>
 
     <script>
@@ -156,7 +161,8 @@
                     lastName: '',
                     email: '',
                     role: '',
-                    fruit: ''
+                    dynamicId: '',
+                    datasource:''
                 });
                 const users = reactive([]);
                 //#endregion
@@ -168,7 +174,8 @@
                         lastName: user.lastName,
                         email: user.email,
                         role: user.role,
-                        fruit: selectedFruit
+                        dynamicId: selectedFruit,
+                        datasource: ""
                     })
                     resetUser();
                 };
@@ -178,7 +185,8 @@
                     user.lastName = "";
                     user.email = "";
                     user.role = "";
-                    user.fruit = "";
+                    user.dynamicId = "";
+                    user.datasource = "";
                 }
 
                 const getEmployees = () => {
@@ -210,6 +218,7 @@
                     alert(JSON.stringify(object, null, 4));
                 }
 
+
                 const gridDeleteEvent = (object) => {
                     const objWithIdIndex = users.findIndex((obj) => obj.firstName === object.firstName);
                     if (objWithIdIndex > -1) {
@@ -227,7 +236,6 @@
 
                 const selectedFruit = ref("");
 
-
                 const cars = ref([
                     { id: 1, value: "Toyota", label: "Toyota" },
                     { id: 2, value: "Honda", label: "Honda" },
@@ -243,10 +251,15 @@
 
                 const selectedDataSource = ref("");
 
+                const comboBoxDataSource = ref([]);
+
+
                 //#region life Cycle Hooks
 
                 onMounted(() => {
                     getEmployees();
+                    //FILL DATASOURCE1
+                    //FILL DATASOURCE2
                 });
 
                 //#endregion
@@ -259,7 +272,7 @@
                     getEmployees,
                     gridEditEvent,
                     gridDeleteEvent,
-                    fruits, selectedFruit, cars, selectedCar, dataSourceSelection, selectedDataSource  // Added
+                    fruits, selectedFruit, cars, selectedCar, dataSourceSelection, selectedDataSource, comboBoxDataSource  // Added
                 }
             }
         });
